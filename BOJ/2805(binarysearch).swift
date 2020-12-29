@@ -14,9 +14,9 @@ func binarySearch(target: Int) -> Int {
     
     while end >= start {
         let mid = (end + start) / 2
-        let totHeight = totalHeight(cutHeight: mid)
+        let totHeight = totalHeight(cutHeight: mid) 
         
-        if target <= totHeight {
+        if target <= totHeight { // 이미 요구조건을 충족했어도 자르는 길이를 올려보는 것 (최대값을 구하는 문제이므로 upperbound)
             res = mid
             start = mid + 1
         } else {
