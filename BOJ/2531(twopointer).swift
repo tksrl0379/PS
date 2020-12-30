@@ -13,28 +13,28 @@ var seq = [Int](repeating: 0, count: N)
     seq[$0] = Int(readLine()!)!
 }
 
-var ary = [Int](repeating: 0, count: D + 1)
+var sushis = [Int](repeating: 0, count: D + 1)
 var maxCounts = 0
 var counts = 0
 (0..<K).forEach {
-    if ary[seq[$0]] == 0 {
+    if sushis[seq[$0]] == 0 {
         counts += 1
     }
-    ary[seq[$0]] += 1
+    sushis[seq[$0]] += 1
 }
 
-maxCounts = (counts + (ary[couponNumber] == 0 ? 1 : 0))
+maxCounts = (counts + (sushis[couponNumber] == 0 ? 1 : 0))
 
 for start in (0..<N-1) {
     let willRemoved = seq[start]
     let willAdded = seq[(start + K) % N] // end
     
-    ary[willRemoved] -= 1
-    if ary[willRemoved] == 0 { counts -= 1 }
-    if ary[willAdded] == 0 { counts += 1 }
-    ary[willAdded] += 1
+    sushis[willRemoved] -= 1
+    if sushis[willRemoved] == 0 { counts -= 1 }
+    if sushis[willAdded] == 0 { counts += 1 }
+    sushis[willAdded] += 1
     
-    maxCounts = max(maxCounts, counts + (ary[couponNumber] == 0 ? 1 : 0))
+    maxCounts = max(maxCounts, counts + (sushis[couponNumber] == 0 ? 1 : 0))
 }
 
 print(maxCounts)
