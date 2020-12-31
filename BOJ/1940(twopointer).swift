@@ -8,11 +8,10 @@ let materials = readLine()!.split(separator: " ").compactMap { Int(String($0)) }
 
 var start = 0
 var end = N - 1
-var sum = 0
 var counts = 0
 
 while end > start {
-    sum = materials[start] + materials[end]
+    let sum = materials[start] + materials[end]
     if sum == M {
         counts += 1
         end -= 1
