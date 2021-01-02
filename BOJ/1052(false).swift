@@ -1,7 +1,7 @@
 // https://www.acmicpc.net/problem/1052
+// 풀지 못해서 https://qgqg264.tistory.com/57 참고
 
-
-func cal(_ answer: Int) -> Int {
+func mergedBottles(_ answer: Int) -> Int {
     
     var value = answer
     var count = 0
@@ -20,8 +20,7 @@ let K = input[1]
 
 var answer = N
 while true {
-    
-    if cal(answer) <= K { break } // 합쳐지는 병의 개수가 K개 이하면 정답
+    if mergedBottles(answer) <= K { break } // 합쳐지는 병의 개수가 K개 이하면 정답
     answer += 1
 }
 
