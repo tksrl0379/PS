@@ -1,4 +1,4 @@
-// https://www.acmicpc.net/problem/11497
+// https://www.acmicpc.net/problem/14916
 
 let n = Int(readLine()!)!
 
