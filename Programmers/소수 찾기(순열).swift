@@ -17,7 +17,7 @@ func permutation(_ depth: Int, _ end: Int, _ numbers: [Character]) {
     }
 }
 
-func isPrime(number: Int) -> Bool {
+func isPrime(_ number: Int) -> Bool {
     if number < 2 { return false }
     for i in 2..<number {
         let a = Double(number) / Double(i)
@@ -37,22 +37,5 @@ func solution(_ numbers: String) -> Int {
         permutation(0, $0, Array(numbers))
     }
     
-    var num = 1
-    (0..<numbers.count).forEach { _ in
-        num *= 10
-    }
-    var prime = [Bool](repeating: true, count: num + 1)
-    prime[0] = false
-    prime[1] = false
-    for i in 2...num {
-        guard prime[i] else { continue }
-        
-        var v = i * 2
-        while v <= num {
-            prime[v] = false
-            v += i
-        }
-    }
-    
-    return set.filter { prime[$0] }.count
+    return set.filter { isPrime($0) }.count
 }
