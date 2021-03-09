@@ -6,15 +6,15 @@ var answers = [[String]]()
 func dfs(_ depth: Int, _ index: Int) {
     answer[depth] = _tickets[index][0]
     
-    if depth == _tickets.count - 1 {
-        answer[_tickets.count] = _tickets[index][1]
+    if depth == _tickets.count - 1 { 
+        answer[_tickets.count] = _tickets[index][1] // 맨 마지막 티켓은 직접 정답에 추가해줘야 함
         answers.append(answer)
         return
     }
     
     let dest = _tickets[index][1]
     for i in 0..<_tickets.count {
-        guard !visited[i] && _tickets[i][0] == dest else { continue }
+        guard !visited[i] && _tickets[i][0] == dest else { continue } // 다음 티켓이 1. 사용(방문)되지 않았고 + 2. 출발지가 현재의 목적지면 조건 충족
         
         visited[i] = true
         dfs(depth + 1, i)
