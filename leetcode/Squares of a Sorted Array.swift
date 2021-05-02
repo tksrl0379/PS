@@ -1,3 +1,15 @@
+// https://leetcode.com/explore/learn/card/fun-with-arrays/521/introduction/3240/
+
+// 1차
+class Solution {
+    func sortedSquares(_ nums: [Int]) -> [Int] {
+        map { $0 * $0 }.sorted { $0 < $1 }
+    }
+}
+
+
+
+// 2차 (투포인터)
 class Solution {
     func sortedSquares(_ nums: [Int]) -> [Int] {
         var N = nums.count
