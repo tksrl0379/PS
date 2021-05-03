@@ -1,3 +1,6 @@
+// https://leetcode.com/explore/learn/card/fun-with-arrays/525/inserting-items-into-an-array/3253/
+// 투포인터
+
 class Solution {
     func merge(_ nums1: inout [Int], _ m: Int, _ nums2: [Int], _ n: Int) {
         var left = 0
