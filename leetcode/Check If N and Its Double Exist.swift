@@ -13,7 +13,7 @@ class Solution {
     }
 }
 
-// 2차 정답
+// 2차 정답 O(N) / hash
 
 class Solution {
     func checkIfExist(_ arr: [Int]) -> Bool {
