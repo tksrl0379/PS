@@ -12,7 +12,7 @@ class MyLinkedList {
     
     private var head: Node?
     
-    func get(_ index: Int) -> Int { // invalid 시 return -1
+    func get(_ index: Int) -> Int { 
         guard let node = node(at: index) else {
             return -1
         }
@@ -24,7 +24,7 @@ class MyLinkedList {
     }
     
     func addAtTail(_ val: Int) {
-        if head == nil { // 공백에 삽입
+        if head == nil { 
             head = Node(val: val, next: nil)
         } else {
             var lastNode = head
