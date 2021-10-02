@@ -1,3 +1,7 @@
+// https://leetcode.com/explore/learn/card/linked-list/209/singly-linked-list/1290/
+
+// 연결 리스트
+
 class MyLinkedList {
 
     class Node {
@@ -61,7 +65,7 @@ class MyLinkedList {
         }
     }
     
-    func node(at index: Int) -> Node? {
+    private func node(at index: Int) -> Node? {
         guard index >= 0 else {
             return nil
         }
