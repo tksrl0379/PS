@@ -196,7 +196,7 @@ class MyLinkedList {
             return node
         } else {
             var node = tail.prev
-            for count in (0...index) {
+            for count in 0...index {
                 if count == (size - index - 1) && node !== head {
                     return node
                 }
