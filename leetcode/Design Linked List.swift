@@ -86,3 +86,126 @@ class MyLinkedList {
         return node
     }
 }
+
+// 이중 연결 리스트
+
+class MyLinkedList {
+
+    class Node {
+        var val: Int
+        var prev: Node?
+        var next: Node?
+        
+        init(val: Int, prev: Node? = nil, next: Node? = nil) {
+            self.val = val
+            self.prev = prev
+            self.next = next
+        }
+    }
+    
+    private var head: Node = Node(val: -100)
+    private var tail: Node = Node(val: -100)
+    private var size: Int = 0
+    
+    init() {
+        head.next = tail
+        tail.prev = head
+    }
+    
+    func get(_ index: Int) -> Int {
+        guard let node = node(at: index) else {
+            return -1
+        }
+        return node.val
+    }
+    
+    func addAtHead(_ val: Int) {
+        if head.next === tail { // 공백인 경우
+            let newNode = Node(val: val, prev: head, next: tail)
+            head.next = newNode
+            tail.prev = newNode
+        } else {
+            let newNode = Node(val: val, prev: head, next: head.next)
+            head.next?.prev = newNode
+            head.next = newNode
+        }
+        size += 1
+    }
+    
+    func addAtTail(_ val: Int) {
+        if head.next === tail { // 공백인 경우
+            let newNode = Node(val: val, prev: head, next: tail)
+            head.next = newNode
+            tail.prev = newNode
+        } else {
+            let newNode = Node(val: val, prev: tail.prev, next: tail)
+            tail.prev?.next = newNode
+            tail.prev = newNode
+        }
+        size += 1
+    }
+    
+    func addAtIndex(_ index: Int, _ val: Int) { // 문제: tail을 이전으로 연결해줄 방법이 없음
+        if index == 0 {
+            addAtHead(val)
+        } else {
+            guard let prevNode = node(at: index - 1) else {
+                return
+            }
+            
+            let newNode = Node(val: val, prev: prevNode, next: prevNode.next)
+            prevNode.next = newNode
+            newNode.next?.prev = newNode
+            
+            size += 1
+        }
+    }
+    
+    func deleteAtIndex(_ index: Int) {
+        guard let deleted = node(at: index) else {
+            return
+        }
+        
+        let prevNode = deleted.prev
+        prevNode?.next = deleted.next
+        prevNode?.next?.prev = prevNode
+        
+        size -= 1
+    }
+    
+    private func node(at index: Int) -> Node? {
+        guard index >= 0 else {
+            return nil
+        }
+        
+        if index < size/2 {
+            var node = head.next
+            for count in 0...index {
+                if count == index && node !== tail {
+                    return node
+                }
+                
+                if node === tail {
+                    return nil
+                }
+                
+                node = node?.next
+            }
+            return node
+        } else {
+            var node = tail.prev
+            for count in (0...index) {
+                if count == (size - index - 1) && node !== head {
+                    return node
+                }
+                
+                if node === head {
+                    return nil
+                }
+                
+                node = node?.prev
+            }
+            return node
+        }
+    }
+}
