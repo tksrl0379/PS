@@ -147,7 +147,7 @@ class MyLinkedList {
         size += 1
     }
     
-    func addAtIndex(_ index: Int, _ val: Int) { // 문제: tail을 이전으로 연결해줄 방법이 없음
+    func addAtIndex(_ index: Int, _ val: Int) { 
         if index == 0 {
             addAtHead(val)
         } else {
