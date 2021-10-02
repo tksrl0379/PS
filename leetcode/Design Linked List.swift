@@ -88,6 +88,8 @@ class MyLinkedList {
 }
 
 // 이중 연결 리스트
+// 찾으려는 index의 size에 따라 head or tail을 선택하여 탐색할 수 있어 단일 연결리스트보다 leetcode 수치 상 2배 더 빠르게 나옴
+// 단점은 코드가 다소 너저분해지고 메모리를 조금씩 더 차지함
 
 class MyLinkedList {
 
