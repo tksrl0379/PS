@@ -1,3 +1,5 @@
+// https://leetcode.com/problems/palindrome-number/submissions/
+
 // 1차: 문자열
 
 class Solution {
