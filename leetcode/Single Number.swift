@@ -13,6 +13,7 @@ class Solution {
 
 
 // 2차 정답: XOR 비트연산자를 이용한 풀이
+// 1, 4, 4 가 나올 때 4와 4를 XOR하면 0인 원리를 이용한 풀이
 
 class Solution {
     func singleNumber(_ nums: [Int]) -> Int {
