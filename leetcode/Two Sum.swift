@@ -5,31 +5,32 @@
 
 class Solution {
     func twoSum(_ nums: [Int], _ target: Int) -> [Int] {
-        var sortedNums: [(num: Int, index: Int)] = []
-        nums.indices.forEach { sortedNums.append((nums[$0], $0)) }
-        sortedNums = sortedNums.sorted { $0.num < $1.num }
+        let nums = nums.enumerated().map { i, v in
+            (value: v, index: i)
+        }.sorted { $0.value < $1.value }
         
         var start = 0
-        var end = sortedNums.count - 1
-        var sum = 0
+        var end = nums.count - 1
         
-        while end > start {
-            sum = sortedNums[start].num + sortedNums[end].num
+        while start < end {
+            let sum = nums[start].value + nums[end].value
             
             if sum == target {
-                break
+                return [nums[start].index, nums[end].index]
             } else if sum < target {
                 start += 1
             } else {
                 end -= 1
             }
         }
-        return [sortedNums[start].index, sortedNums[end].index]
+        
+        return []
     }
 }
 
 
 // 2차: 딕셔너리
+// '배열의 특정 값'을 딕셔너리에 키로 등록하고 'target - 배열의 다른 특정 값'이 딕셔너리에 등록돼있는지 탐색
 
 class Solution {
     func twoSum(_ nums: [Int], _ target: Int) -> [Int] {
