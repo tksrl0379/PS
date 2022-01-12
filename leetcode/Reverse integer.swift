@@ -3,6 +3,8 @@
 // 변환하지 않고 그대로 푸는 방법도 있어서 해봤다.
 // 효율은 아주 조금 더 좋은 것 같긴 한데, 효율성에서 큰 차이가 없다면 실제론 1차 방법을 사용할 것 같다.
 
+// (1/12) 개선한 3차 정도면 나쁘지 않은 것 같음
+
 // 하나 발견한 신기한건, Int32(숫자) 에 범위를 -2^32/2 ~ 2^32/2 - 1 를 초과하는 숫자가 런타임에 들어가게 되면 범위 초과에 관한 에러가 발생하는데 
 // Int32(String(숫자))와 같이 넣게 되면 런타임 에러가 안 뜨고 알아서 nil로 바꿔준다.
 
@@ -53,3 +55,26 @@ class Solution {
         return answer
     }
 }
+
+// 다시 풀어보고 2차 방법 좀 더 개선함
+// 3차
+
+class Solution {
+    func reverse(_ x: Int) -> Int {
+        var answer = 0
+        var value = x
+        
+        while abs(value) > 0 {
+            answer = (value % 10 + answer * 10)
+            value /= 10
+        }
+        
+        guard Int32.min <= answer && answer <= Int32.max - 1 else {
+            return 0
+        }
+        
+        return answer
+    }
+}
+
+
