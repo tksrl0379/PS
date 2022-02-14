@@ -38,6 +38,7 @@ class Solution {
 }
 
 // 2차 정답: String.index를 매번 만드는 것보단, var로 선언하고 index(after:)를 사용하는게 말도 안되게 훨씬 빠르다.
+// 또한 String을 Array로 변환하지 않아서 그런지 속도도 엄청나게 빠름
 class Solution {
     func strStr(_ haystack: String, _ needle: String) -> Int {
         if needle.isEmpty { return 0 }
@@ -58,6 +59,40 @@ class Solution {
             startIndex = haystack.index(after: startIndex)
             endIndex = haystack.index(after: endIndex)
             index += 1
+        }
+        
+        return -1
+    }
+}
+
+// 3차 정답 (2/15)
+// 문제 설명 중, 인터뷰 시에 needle이 빈 문자열("") 인 경우 어떻게 처리해야 하는지에 대한 질문이 아주 좋은 질문이라고 조언하고 있음
+
+class Solution {
+    func strStr(_ haystack: String, _ needle: String) -> Int {
+        if needle == "" {
+            return 0
+        }
+        let needle = Array(needle)
+        let haystack = Array(haystack)
+        
+        for startIndex in haystack.indices {
+            
+            for neeIndex in needle.indices {
+                let hayIndex = startIndex + neeIndex
+                
+                guard (0..<haystack.count) ~= hayIndex else {
+                    return -1
+                }
+                
+                guard haystack[hayIndex] == needle[neeIndex] else {
+                    break
+                }
+                
+                if neeIndex == needle.count - 1 {
+                    return startIndex
+                }
+            }
         }
         
         return -1
