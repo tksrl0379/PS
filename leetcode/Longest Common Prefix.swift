@@ -31,9 +31,15 @@ class Solution {
 }
 
 // 2차 정답
+// hasPrefix
+// 테스트 케이스중에 0이 있으면 isEmpty 체크 필요
+// 다른 풀이들은 string 비교 시 index범위 체크해줘야하는데, 이건 애초에 가장 짧은 길이를 가진 문자열을 선정했기 때문에 불필요해져서 로직이 간소화됨.
 
 class Solution {
     func longestCommonPrefix(_ strs: [String]) -> String {
+        if strs.isEmpty {
+            return ""
+        }
         
         var minStr = strs.min { $0.count < $1.count }!
         
